@@ -1,5 +1,6 @@
 package BDDTest;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -30,5 +31,11 @@ public class SeleniumTest {
 
     public void goToHomePage() {
         driver.get(baseUrl);
+    }
+
+    public void searchForPillows() {
+        driver.findElement(By.id("searchbox")).clear();
+        driver.findElement(By.id("searchbox")).sendKeys("pillows");
+        driver.findElement(By.cssSelector("button.buttonSearch.color1")).click();
     }
 }
