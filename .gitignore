@@ -1,3 +1,5 @@
 .c9/
 .gradle/
 README.md
+.idea/
+gradle_cucumber.iml
