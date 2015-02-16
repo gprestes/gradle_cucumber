@@ -25,8 +25,7 @@ public class StepDefs {
 
     @When("^I search for pillows$")
     public void i_search_for_pillows() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        script.searchForPillows();
     }
 
     @Then("^the page title is as expected$")
