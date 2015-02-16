@@ -20,8 +20,7 @@ public class StepDefs {
 
     @Given("^I am on the homepage$")
     public void i_am_on_the_homepage() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        setUpWebDriver();
     }
 
     @When("^I search for pillows$")
