@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertEquals;
+
 public class SeleniumTest {
     private WebDriver driver;
     private String baseUrl;
@@ -37,5 +39,9 @@ public class SeleniumTest {
         driver.findElement(By.id("searchbox")).clear();
         driver.findElement(By.id("searchbox")).sendKeys("pillows");
         driver.findElement(By.cssSelector("button.buttonSearch.color1")).click();
+    }
+
+    public void checkPageTitle() {
+        assertEquals("Pillows & V Shaped Pillows | Feather Pillows & More | Dunelm", driver.getTitle());
     }
 }
