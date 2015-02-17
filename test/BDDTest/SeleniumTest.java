@@ -16,12 +16,8 @@ import static org.junit.Assert.assertEquals;
 public class SeleniumTest {
     private WebDriver driver;
     private String baseUrl;
-    private String browserName;
-    private String browserVersion;
 
     public void setUp() throws Exception {
-        System.setProperty("webdriver", "chrome");
-
         switch (System.getProperty("webdriver")) {
             case "headless":
                 System.setProperty("phantomjs.binary.path", "/drivers/phantomjs.exe");
@@ -45,8 +41,8 @@ public class SeleniumTest {
         driver.manage().window().maximize();
 
         Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
-        browserName = caps.getBrowserName();
-        browserVersion = caps.getVersion();
+        String browserName = caps.getBrowserName();
+        String browserVersion = caps.getVersion();
         System.out.println("Automated test run. We're running on: " + browserName + " - " + browserVersion);
     }
 

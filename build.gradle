@@ -1,18 +1,20 @@
+defaultTasks "cukeRunner"
+
+group = "gradle_cucumber"
+
 repositories {
     mavenCentral()
 }
 
 apply plugin: "java"
-apply plugin: "eclipse"
-apply plugin: "idea"
 
 task wrapper(type: Wrapper) {
     gradleVersion = "2.2"
 }
 
 dependencies {
-    compile('junit:junit:4.11') {
-        exclude group: 'org.hamcrest'
+    compile("junit:junit:4.11") {
+        exclude group: "org.hamcrest"
     }
     compile "com.codeborne:phantomjsdriver:1.2.1"
     compile "info.cukes:cucumber-core:1.2.2"
@@ -20,10 +22,45 @@ dependencies {
     compile "info.cukes:cucumber-junit:1.2.2"
 }
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testCompile
+    }
+}
+
 sourceSets {
     test {
         java {
             srcDir "test"
+        }
+    }
+}
+
+task cukeRunner() {
+    dependsOn testClasses
+
+    doFirst {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            systemProperty "webdriver", webDriver
+            if (cucumberFeature == "features") { //no feature defined on command line
+                args = [
+                        "--plugin", "pretty",
+                        "--plugin", "html:target/cucumber-html-report",
+                        "--plugin", "junit:target/cucumber-junit-report/allcukes.xml",
+                        "--glue", "BDDTest", "test",
+                        "--tags", "@Runme",
+                        "--strict"
+                ]
+            } else {
+                args = [
+                        "--plugin", "pretty",
+                        "--plugin", "html:target/cucumber-html-report",
+                        "--plugin", "junit:target/cucumber-junit-report/allcukes.xml",
+                        "--glue", "BDDTest", "test/featureFiles/" + cucumberFeature + ".feature"
+                ]
+            }
         }
     }
 }
