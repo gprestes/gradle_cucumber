@@ -1,5 +1,6 @@
 package BDDTest;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -30,6 +31,10 @@ public class StepDefs {
     @Then("^the page title is as expected$")
     public void the_page_title_is_as_expected() throws Throwable {
         script.checkPageTitle();
+    }
+
+    @After
+    public void tearDown() throws Exception {
         tidyUp();
     }
 }
