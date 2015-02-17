@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -17,10 +20,24 @@ public class SeleniumTest {
     private String browserVersion;
 
     public void setUp() throws Exception {
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver","headless");
+
+        if ("headless".equals(System.getProperty("webdriver"))) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setJavascriptEnabled(true);
+            capabilities.setCapability(
+                    PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+                    "/drivers/phantomjs.exe"
+            );
+            driver = new PhantomJSDriver(capabilities);
+        } else {
+            driver = new FirefoxDriver();
+            driver.manage().window().maximize();
+        }
+
         baseUrl = "http://www.dunelm-mill.com/";
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+
         Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
         browserName = caps.getBrowserName();
         browserVersion = caps.getVersion();
@@ -28,7 +45,8 @@ public class SeleniumTest {
     }
 
     public void tearDown() {
-        driver.quit();
+        if (null != driver)
+            driver.quit();
     }
 
     public void goToHomePage() {
