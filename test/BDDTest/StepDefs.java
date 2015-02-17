@@ -1,6 +1,5 @@
 package BDDTest;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -30,7 +29,7 @@ public class StepDefs {
 
     @Then("^the page title is as expected$")
     public void the_page_title_is_as_expected() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        script.checkPageTitle();
+        tidyUp();
     }
 }
