@@ -24,7 +24,7 @@ public class SeleniumTest {
         Capabilities caps = ((RemoteWebDriver) driver).getCapabilities();
         browserName = caps.getBrowserName();
         browserVersion = caps.getVersion();
-        System.out.println("Automated test run.We're running on " + browserName + "" + browserVersion);
+        System.out.println("Automated test run. We're running on: " + browserName + " - " + browserVersion);
     }
 
     public void tearDown() {
@@ -35,9 +35,9 @@ public class SeleniumTest {
         driver.get(baseUrl);
     }
 
-    public void searchForPillows() {
+    public void searchForValue(String searchValue) {
         driver.findElement(By.id("searchbox")).clear();
-        driver.findElement(By.id("searchbox")).sendKeys("pillows");
+        driver.findElement(By.id("searchbox")).sendKeys(searchValue);
         driver.findElement(By.cssSelector("button.buttonSearch.color1")).click();
     }
 

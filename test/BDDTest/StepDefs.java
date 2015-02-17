@@ -23,9 +23,9 @@ public class StepDefs {
         setUpWebDriver();
     }
 
-    @When("^I search for pillows$")
-    public void i_search_for_pillows() throws Throwable {
-        script.searchForPillows();
+    @When("^I search for \"(.*?)\"$")
+    public void i_search_for(String searchValue) throws Throwable {
+        script.searchForValue(searchValue);
     }
 
     @Then("^the page title is as expected$")
