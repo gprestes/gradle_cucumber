@@ -43,7 +43,7 @@ task cukeRunner() {
         javaexec {
             main = "cucumber.api.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            systemProperty "webdriver", webDriver
+            //systemProperty "webdriver", webDriver
             if (cucumberFeature == "features") { //no feature defined on command line
                 args = [
                         "--plugin", "pretty",
