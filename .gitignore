@@ -5,3 +5,4 @@ README.md
 gradle_cucumber.iml
 build/
 target/
+phantomjsdriver.log
