@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -20,7 +21,7 @@ public class SeleniumTest {
     private String browserVersion;
 
     public void setUp() throws Exception {
-        System.setProperty("webdriver","headless");
+        System.setProperty("webdriver", "ie");
 
         if ("headless".equals(System.getProperty("webdriver"))) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -30,6 +31,10 @@ public class SeleniumTest {
                     "/drivers/phantomjs.exe"
             );
             driver = new PhantomJSDriver(capabilities);
+        }
+        if ("ie".equals(System.getProperty("webdriver"))) {
+            System.setProperty("webdriver.ie.driver", "/drivers/IEDriverServer.exe");
+            driver = new InternetExplorerDriver();
         } else {
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
