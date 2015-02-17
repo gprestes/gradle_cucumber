@@ -41,7 +41,7 @@ public class SeleniumTest {
         driver.findElement(By.cssSelector("button.buttonSearch.color1")).click();
     }
 
-    public void checkPageTitle() {
-        assertEquals("Pillows & V Shaped Pillows | Feather Pillows & More | Dunelm", driver.getTitle());
+    public void checkPageTitle(String expectedTitle) {
+        assertEquals(expectedTitle, driver.getTitle());
     }
 }

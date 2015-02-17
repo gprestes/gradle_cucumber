@@ -28,9 +28,9 @@ public class StepDefs {
         script.searchForValue(searchValue);
     }
 
-    @Then("^the page title is as expected$")
-    public void the_page_title_is_as_expected() throws Throwable {
-        script.checkPageTitle();
+    @Then("^the page title is \"(.*?)\"$")
+    public void the_page_title_is(String expectedTitle) throws Throwable {
+        script.checkPageTitle(expectedTitle);
     }
 
     @After
