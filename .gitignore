@@ -6,3 +6,7 @@ gradle_cucumber.iml
 build/
 target/
 phantomjsdriver.log
+
+#VS Code files
+.project
+.settings/
