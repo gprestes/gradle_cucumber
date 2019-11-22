@@ -12,7 +12,7 @@ dependencies {
     compile("junit:junit:4.11") {
         exclude group: "org.hamcrest"
     }
-    compile "com.codeborne:phantomjsdriver:1.2.1"
+    compile "com.codeborne:phantomjsdriver:1.4.4"
     compile "info.cukes:cucumber-core:1.2.2"
     compile "info.cukes:cucumber-java:1.2.2"
     compile "info.cukes:cucumber-junit:1.2.2"
