@@ -9,7 +9,7 @@ repositories {
 apply plugin: "java"
 
 dependencies {
-    compile("junit:junit:4.11") {
+    compile("junit:junit:4.12") {
         exclude group: "org.hamcrest"
     }
     compile "com.codeborne:phantomjsdriver:1.4.4"
