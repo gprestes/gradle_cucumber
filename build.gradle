@@ -13,9 +13,9 @@ dependencies {
         exclude group: "org.hamcrest"
     }
     compile "com.codeborne:phantomjsdriver:1.5.0"
-    compile "info.cukes:cucumber-core:1.2.6"
-    compile "info.cukes:cucumber-java:1.2.6"
-    compile "info.cukes:cucumber-junit:1.2.6"
+    compile "io.cucumber:cucumber-core:7.34.2"
+    compile "io.cucumber:cucumber-java:7.34.2"
+    compile "io.cucumber:cucumber-junit:7.34.2"
 }
 
 configurations {
